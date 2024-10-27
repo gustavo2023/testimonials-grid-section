@@ -117,29 +117,33 @@ main {
   align-items: center;
   justify-content: center;
   padding: 71px 24px;
+  text-wrap: wrap;
 }
 
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  text-wrap: wrap;
+  width: min(95%, 70rem);
 }
 
 .testimony-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   border-radius: 0.5rem;
   box-shadow: 40px 60px 50px -47px rgba(72, 85, 106, 0.25);
-  padding: 10%;
+  padding: 2rem;
 }
 
 .one {
-  position: relative;
-  z-index: -2;
   background-color: var(--violet);
   color: white;
+}
+
+.one.quote {
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  background-position: top right 10%;
 }
 
 .two {
@@ -168,11 +172,12 @@ main {
 .user-image {
   border-radius: 50%;
   width: 1.75rem;
-  height: 1.75rem;
+  aspect-ratio: 1;
 }
 
 .one .user-image {
   border: 2px solid #a775f1;
+  width: 2rem;
 }
 
 .four .user-image {
@@ -203,19 +208,14 @@ main {
   opacity: 0.5;
 }
 
-.quotes-icon {
-  position: absolute;
-  top: 0;
-  right: 2rem;
-  z-index: -1;
-  width: 6.5rem;
-  height: 6.375rem;
-}
-
 .testimony-intro {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: normal;
+  margin-bottom: 1rem;
+}
+
+.one .testimony-intro {
   margin-bottom: 2.5rem;
 }
 
@@ -228,4 +228,54 @@ main {
 
 .one .main-testimony {
   color: var(--light-gray);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media (min-width: 64rem) {
+  .testimonials-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "one one two five"
+      "three four four five";
+  }
+
+  .testimony-container {
+    padding: 1.6rem 2rem;
+  }
+
+  .one {
+    grid-area: one;
+  }
+
+  .two {
+    grid-area: two;
+  }
+
+  .three {
+    grid-area: three;
+  }
+
+  .four {
+    grid-area: four;
+  }
+
+  .five {
+    grid-area: five;
+  }
+
+  .one .testimony-intro {
+    margin-bottom: 1rem;
+  }
+
+  .three .testimony-intro,
+  .four .testimony-intro,
+  .five .testimony-intro {
+    margin-bottom: 1.5rem;
+  }
 }
